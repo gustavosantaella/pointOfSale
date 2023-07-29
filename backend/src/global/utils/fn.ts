@@ -6,7 +6,7 @@ const statusCodeErrors: Array<number> = [400, 401, 500, 501, 404, 403];
 
 export const response = <T>(
   res: Response,
-  data: Record<any, any> | Array<T> | ApiError = {},
+  data: Record<any, any> | Array<T> | ApiError | T = {},
   status: number = 200,
 ): void => {
   let dataResponse: Record<any, any> = {};

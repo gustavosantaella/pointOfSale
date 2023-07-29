@@ -18,7 +18,7 @@ export default class AuthController {
   ): Promise<void> {
     try {
       const data: boolean = await this.authService.register(body);
-      response(res, { jeje: 2 });
+      response(res, data);
     } catch (e) {
       response(res, e);
     }
