@@ -1,7 +1,8 @@
-import { Injectable } from '@nestjs/common';
+import { Global, Injectable } from '@nestjs/common';
 import { ConfigService as ConfigServicePackage } from '@nestjs/config';
 
 @Injectable()
+@Global()
 export default class EnvironmentService {
   constructor(private config: ConfigServicePackage) {
     console.log('Env loading');

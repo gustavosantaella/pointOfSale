@@ -1,4 +1,5 @@
-import { Schema, Prop } from '@nestjs/mongoose';
+import { Schema, Prop, SchemaFactory } from '@nestjs/mongoose';
+import { Schema as Sc } from 'mongoose';
 
 @Schema({ timestamps: true })
 export default class UserEntity {
@@ -11,3 +12,6 @@ export default class UserEntity {
   @Prop({ required: true, unique: false, type: String })
   country: string;
 }
+
+export const userSchema: Sc<UserEntity> =
+  SchemaFactory.createForClass(UserEntity);

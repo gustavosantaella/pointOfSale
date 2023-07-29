@@ -3,6 +3,7 @@ import { MongooseModule } from '@nestjs/mongoose';
 import ConfigService from '../environment.service';
 import EnvModule from '../environment.module';
 import EnvironmentService from '../environment.service';
+import { userSchema } from 'src/modules/users/domain/entities/user.entity';
 
 @Module({
   imports: [
