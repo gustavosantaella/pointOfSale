@@ -1,8 +1,12 @@
-import { NestFactory } from '@nestjs/core';
+import { NestApplication, NestFactory } from '@nestjs/core';
 import { AppModule } from './app.module';
+import { INestApplication } from '@nestjs/common';
+import EnvironmentService from './global/config/environment.service';
 
-async function bootstrap() {
-  const app = await NestFactory.create(AppModule);
-  await app.listen(3000);
+async function bootstrap(): Promise<void> {
+  const app: NestApplication = await NestFactory.create(AppModule);
+  const PORT: number = Number(process.env['APP_PORT']);
+  await app.listen(PORT);
+  console.log('App is running on port: ' + PORT);
 }
 bootstrap();
