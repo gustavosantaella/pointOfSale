@@ -1,6 +1,7 @@
 import { Model, Types, UpdateWriteOpResult } from 'mongoose';
+import RepositoryI from '../interfaces/repository.interface';
 
-export default class Repository {
+export default class Repository implements RepositoryI {
   public model: Model<any>;
   constructor(model: Model<any>) {
     this.model = model;
