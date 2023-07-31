@@ -17,4 +17,4 @@ import { providerSchema } from './domain/entity/provider.entity';
   providers: [ProviderService, ProviderRepository],
   controllers: [ProviderController],
 })
-export default class ProvviderModule {}
+export default class ProviderModule {}

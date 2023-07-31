@@ -1,3 +1,3 @@
-export default interface ServiceI {
-  findByPk<T>(pk: string): Promise<T>;
+export default interface ServiceI<T> {
+  findByPk(pk: string): Promise<T>;
 }
