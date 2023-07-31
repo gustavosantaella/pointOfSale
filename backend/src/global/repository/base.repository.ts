@@ -1,13 +1,13 @@
 import { Model, Types, UpdateWriteOpResult } from 'mongoose';
 import RepositoryI from '../interfaces/repository.interface';
 
-export default class Repository implements RepositoryI {
-  public model: Model<any>;
-  constructor(model: Model<any>) {
+export default class Repository<T> implements RepositoryI<T> {
+  public model: Model<T>;
+  constructor(model: Model<T>) {
     this.model = model;
   }
 
-  public async findByPk<T>(pk: string): Promise<T> {
+  public async findByPk(pk: string): Promise<T> {
     return await this.model.findOne({
       _id: new Types.ObjectId(pk),
     });
@@ -41,7 +41,7 @@ export default class Repository implements RepositoryI {
     }
   }
 
-  public async create<T>(data: T): Promise<T> {
+  public async create(data: T): Promise<T> {
     return await this.model.create(data);
   }
 }
