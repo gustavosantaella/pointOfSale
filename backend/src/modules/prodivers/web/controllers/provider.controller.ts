@@ -16,7 +16,7 @@ export default class ProviderController {
     try {
       const data: ProviderEntity = await this.service.create(payload);
       response(res, data);
-    } catch (e: any) {
+    } catch (e) {
       response(res, e);
     }
   }

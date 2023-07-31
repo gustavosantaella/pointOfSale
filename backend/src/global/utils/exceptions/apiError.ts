@@ -7,6 +7,12 @@ export class ApiError extends Error {
     this.message = message;
     this.errorCode = code;
   }
+
+  static exec(e: unknown, code: number = 400): void {
+    if (e instanceof Error) {
+      throw new this(e.message, code);
+    }
+  }
 }
 
 export class ResourceNotFound extends ApiError {

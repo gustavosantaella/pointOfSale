@@ -5,22 +5,52 @@ import { Document, Schema as Sc } from 'mongoose';
 
 @Schema({ timestamps: true })
 export default class ProviderEntity extends Document {
-  @Prop({ required: true, unique: true, type: String })
+  @Prop({
+    required: true,
+    unique: true,
+    type: String,
+    uppercase: true,
+    trim: true,
+  })
   name: string;
 
-  @Prop({ required: true, unique: true, type: String })
+  @Prop({
+    required: true,
+    unique: true,
+    type: String,
+    uppercase: true,
+    trim: true,
+  })
   taxNumberId: string;
 
-  @Prop({ required: false, unique: true, type: String })
+  @Prop({
+    required: false,
+    unique: true,
+    type: String,
+    lowercase: true,
+    trim: true,
+  })
   email?: string;
 
-  @Prop({ required: false, unique: true, type: String })
+  @Prop({ required: false, unique: true, type: String, trim: true })
   phone?: string;
 
-  @Prop({ required: true, unique: false, type: String })
+  @Prop({
+    required: true,
+    unique: false,
+    type: String,
+    uppercase: true,
+    trim: true,
+  })
   country: string;
 
-  @Prop({ required: false, unique: true, type: String })
+  @Prop({
+    required: false,
+    unique: true,
+    type: String,
+    lowercase: true,
+    trim: true,
+  })
   website?: string;
 }
 

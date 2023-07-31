@@ -38,8 +38,8 @@ export default class ProviderService extends Service<ProviderEntity> {
       }
       const provider: ProviderEntity = await this.repo.create(entity);
       return provider;
-    } catch (e: any) {
-      throw new ApiError(e.message);
+    } catch (e) {
+      ApiError.exec(e);
     }
   }
 }
