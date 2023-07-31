@@ -4,7 +4,7 @@ import { Document, Schema as Sc } from 'mongoose';
 // TODO: create sales contact entity
 
 @Schema({ timestamps: true })
-export default class ProviderEntity {
+export default class ProviderEntity extends Document {
   @Prop({ required: true, unique: true, type: String })
   name: string;
 
@@ -12,16 +12,16 @@ export default class ProviderEntity {
   taxNumberId: string;
 
   @Prop({ required: false, unique: true, type: String })
-  email: string;
+  email?: string;
 
   @Prop({ required: false, unique: true, type: String })
-  phone: string;
+  phone?: string;
 
-  @Prop({ required: false, unique: true, type: String })
+  @Prop({ required: true, unique: false, type: String })
   country: string;
 
   @Prop({ required: false, unique: true, type: String })
-  website: string;
+  website?: string;
 }
 
 export const providerSchema: Sc<ProviderEntity> =

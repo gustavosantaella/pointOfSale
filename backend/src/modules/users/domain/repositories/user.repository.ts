@@ -5,7 +5,7 @@ import UserEntity from '../entities/user.entity';
 import Repository from 'src/global/repository/base.repository';
 
 @Injectable()
-export default class UserRepository extends Repository {
+export default class UserRepository extends Repository<UserEntity> {
   constructor(@InjectModel('users') model: Model<UserEntity>) {
     super(model);
   }

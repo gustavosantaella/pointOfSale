@@ -3,19 +3,28 @@ import Service from 'src/global/service/base.service';
 import ProviderRepository from '../domain/repositories/provider.repository';
 import ProviderEntity from '../domain/entity/provider.entity';
 import { ApiError } from 'src/global/utils/exceptions/apiError';
+import CreateProviderModel from '../web/models/provider-create.model';
+import { ProviderExistsError } from '../exceptions/main';
 
 @Injectable()
-export default class ProviderService extends Service {
-  constructor(repo: ProviderRepository) {
-    super(repo);
+export default class ProviderService extends Service<ProviderEntity> {
+  constructor(private providerRepository: ProviderRepository) {
+    super(providerRepository);
   }
 
-  async create(data: Record<any, any>): Promise<ProviderEntity> {
+  async create(data: CreateProviderModel): Promise<ProviderEntity> {
     try {
+      const name: string = data.name;
+      const taxId: string = data.taxNumberId;
+      const existsProvider: ProviderEntity =
+        await this.providerRepository.findByTinOrName(name, taxId);
+      if (existsProvider) {
+        throw new ProviderExistsError();
+      }
       const entity: ProviderEntity = new ProviderEntity();
       entity.country = data.country;
-      entity.name = data.name;
-      entity.taxNumberId = data.taxNumberId;
+      entity.name = name;
+      entity.taxNumberId = taxId;
       if (data.phone) {
         entity.phone = data.phone;
       }
