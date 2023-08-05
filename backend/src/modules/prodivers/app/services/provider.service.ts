@@ -6,14 +6,12 @@ import { ApiError } from 'src/global/utils/exceptions/apiError';
 import CreateProviderModel from '../../web/models/provider-create.model';
 import { ProviderExistsError } from '../exceptions/main';
 import AuthService from 'src/modules/auth/app/services/auth.service';
+import { ProviderFacade } from '../../facades/provider.facade';
 
 @Injectable()
 export default class ProviderService extends Service<ProviderEntity> {
-  constructor(
-    private providerRepository: ProviderRepository,
-    private authService: AuthService,
-  ) {
-    super(providerRepository);
+  constructor(private providerFacade: ProviderFacade) {
+    super(providerFacade);
   }
 
   async create(data: CreateProviderModel): Promise<ProviderEntity> {
@@ -21,7 +19,7 @@ export default class ProviderService extends Service<ProviderEntity> {
       const name: string = data.name;
       const taxId: string = data.taxNumberId;
       const existsProvider: ProviderEntity =
-        await this.providerRepository.findByTinOrName(name, taxId);
+        await this.providerFacade.findByTinOrName(name, taxId);
       if (existsProvider) {
         throw new ProviderExistsError();
       }
@@ -43,7 +41,7 @@ export default class ProviderService extends Service<ProviderEntity> {
         entity.website = data.website;
       }
 
-      const provider: ProviderEntity = await this.repo.create(entity);
+      const provider: ProviderEntity = await this.facade.create(entity);
       return provider;
     } catch (e) {
       ApiError.exec(e);

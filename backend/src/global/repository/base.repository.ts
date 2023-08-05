@@ -1,6 +1,6 @@
 import { Connection, Model, Types, UpdateWriteOpResult } from 'mongoose';
 import RepositoryI from '../interfaces/repository.interface';
-import { InjectConnection } from '@nestjs/mongoose';
+import { InjectConnection, InjectModel } from '@nestjs/mongoose';
 
 export default class Repository<T> {
   protected model: Model<T>;
@@ -42,7 +42,7 @@ export default class Repository<T> {
     }
   }
 
-  public async create(data: T): Promise<T> {
+  public async create(data: object): Promise<T> {
     return await this.model.create(data);
   }
 

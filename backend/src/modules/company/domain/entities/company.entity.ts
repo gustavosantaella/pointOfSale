@@ -19,14 +19,15 @@ export class CompanyEntity {
     uppercase: true,
     trim: true,
   })
-  ownerId: string;
+  ownerId: Types.ObjectId;
 
   @Prop({
-    required: true,
+    required: false,
     unique: true,
     type: String,
     uppercase: true,
     trim: true,
+    default: null,
   })
   taxNumberId: string;
 

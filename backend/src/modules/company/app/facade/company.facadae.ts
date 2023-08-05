@@ -1,10 +1,21 @@
 import { Injectable } from '@nestjs/common';
-import { Model } from 'mongoose';
+import { Model, Types } from 'mongoose';
 import { Facade } from 'src/global/facades/base.facade';
+import { CompanyEntity } from '../../domain/entities/company.entity';
+import { CompanyRepository } from '../../domain/repositories/company.repository';
+import { NewCompanyDTO } from '../dto/NewCompany.dto';
 
 @Injectable()
-export class CompanyFacade<T> extends Facade<T> {
-  constructor(private repo: Model<T>) {
-    super(repo);
+export class CompanyFacade extends Facade<CompanyEntity> {
+  constructor(private companyRepository: CompanyRepository) {
+    super(companyRepository);
+  }
+
+  async createWithOwner(data: NewCompanyDTO): Promise<NewCompanyDTO> {
+    const entity: CompanyEntity = new CompanyEntity();
+    entity.name = data.name;
+    entity.ownerId = new Types.ObjectId(data.owner);
+    await this.repository.create(entity);
+    return data;
   }
 }

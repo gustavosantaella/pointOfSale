@@ -5,6 +5,7 @@ import ProviderController from './web/controllers/provider.controller';
 import { MongooseModule } from '@nestjs/mongoose';
 import { providerSchema } from './domain/entity/provider.entity';
 import AuthModule from '../auth/auth.module';
+import { ProviderFacade } from './facades/provider.facade';
 
 @Module({
   imports: [
@@ -16,7 +17,7 @@ import AuthModule from '../auth/auth.module';
       },
     ]),
   ],
-  providers: [ProviderService, ProviderRepository],
+  providers: [ProviderService, ProviderRepository, ProviderFacade],
   controllers: [ProviderController],
 })
 export default class ProviderModule {}
