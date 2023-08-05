@@ -16,10 +16,10 @@ export default class ProviderRepository extends Repository<ProviderEntity> {
         $match: {
           $or: [
             {
-              $name: name,
+              name: name.toUpperCase(),
             },
             {
-              $taxNumberId: tin,
+              taxNumberId: tin.toUpperCase(),
             },
           ],
         },

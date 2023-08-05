@@ -1,5 +1,5 @@
 import { Body, Controller, Inject, Post, Res } from '@nestjs/common';
-import AuthService from '../../services/auth.service';
+import AuthService from '../../app/services/auth.service';
 import { REQUEST } from '@nestjs/core';
 import { Request, Response } from 'express';
 import { response } from 'src/global/utils/fn';

@@ -3,13 +3,31 @@ import { Schema as Sc } from 'mongoose';
 
 @Schema({ timestamps: true })
 export default class UserEntity {
-  @Prop({ required: true, unique: true, type: String })
+  @Prop({
+    required: true,
+    unique: true,
+    type: String,
+    lowercase: true,
+    trim: true,
+  })
   email: string;
 
-  @Prop({ virtual: true, required: true, unique: false, type: String })
+  @Prop({
+    virtual: true,
+    required: true,
+    unique: false,
+    type: String,
+    trim: true,
+  })
   password: string;
 
-  @Prop({ required: true, unique: false, type: String })
+  @Prop({
+    required: true,
+    unique: false,
+    type: String,
+    uppercase: true,
+    trim: true,
+  })
   country: string;
 }
 
