@@ -1,10 +1,10 @@
 import { Schema, SchemaFactory, Prop } from '@nestjs/mongoose';
-import { Document, Schema as Sc } from 'mongoose';
+import { Schema as Sc } from 'mongoose';
 
 // TODO: create sales contact entity
 
 @Schema({ timestamps: true })
-export default class ProviderEntity extends Document {
+export default class ProviderEntity {
   @Prop({
     required: true,
     unique: true,
