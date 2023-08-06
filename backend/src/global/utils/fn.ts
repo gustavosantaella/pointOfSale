@@ -15,7 +15,13 @@ export const response = <T>(
     const error: ApiError = data as ApiError;
     status = error.errorCode;
     dataResponse.message = error.message;
-    Logger.error(error, 'Http Response');
+    Logger.error(error, 'Http Response [API ERROR]');
+    delete dataResponse.data;
+  } else if (data instanceof Error) {
+    const error: Error = data as Error;
+    status = 404;
+    dataResponse.message = error.message;
+    Logger.error(error, 'Http Response [ERROR]');
     delete dataResponse.data;
   }
   dataResponse = {
