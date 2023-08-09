@@ -1,0 +1,24 @@
+{
+  "name": "point-of-sale-desktop",
+  "version": "1.0.0",
+  "description": "desktop app for point of sale",
+  "main": "main.js",
+  "scripts": {
+    "start:local": "electron .",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/gustavosantaella/pointOfSale.git"
+  },
+  "author": "gustavosantaella",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/gustavosantaella/pointOfSale/issues"
+  },
+  "homepage": "https://github.com/gustavosantaella/pointOfSale#readme",
+  "devDependencies": {
+    "@types/electron": "^1.6.10",
+    "electron": "^25.4.0"
+  }
+}

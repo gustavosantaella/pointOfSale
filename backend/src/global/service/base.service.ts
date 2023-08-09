@@ -1,10 +1,11 @@
 import { Injectable } from '@nestjs/common';
 import RepositoryI from '../interfaces/repository.interface';
+import { Facade } from '../facades/base.facade';
 
 @Injectable()
 export default class Service<T> {
-  public repo: RepositoryI<T>;
-  constructor(repo: RepositoryI<T>) {
-    this.repo = repo;
+  public facade: Facade<T>;
+  constructor(facade: Facade<T>) {
+    this.facade = facade;
   }
 }
