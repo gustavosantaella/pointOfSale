@@ -4,7 +4,7 @@ import { Injectable } from '@nestjs/common';
 
 @Injectable()
 export class Facade<G> {
-  public repository: Repository<G>;
+  protected repository: Repository<G>;
   constructor(repository: Repository<G>) {
     this.repository = repository;
   }

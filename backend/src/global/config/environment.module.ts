@@ -8,6 +8,7 @@ const envFilePath = (file: string): string => './envs/' + file;
   imports: [
     ConfigModulePackage.forRoot({
       envFilePath: [
+        '.env',
         envFilePath('.env.local'),
         envFilePath('.env.prod'),
         envFilePath('.env.dev'),

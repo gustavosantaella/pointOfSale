@@ -7,8 +7,8 @@ import { NewCompanyDTO } from '../dto/NewCompany.dto';
 
 @Injectable()
 export class CompanyFacade extends Facade<CompanyEntity> {
-  constructor(private companyRepository: CompanyRepository) {
-    super(companyRepository);
+  constructor(protected repository: CompanyRepository) {
+    super(repository);
   }
 
   async createWithOwner(data: NewCompanyDTO): Promise<NewCompanyDTO> {

@@ -20,7 +20,6 @@ export class CompanyService extends Service<CompanyEntity> {
 
   async new(data: NewCompanyModel): Promise<boolean> {
     try {
-      console.log(data);
       const company: any = await this.facade.findOneByNameField(data.name);
       if (company) {
         throw new CompanyAlreadyExistsError();

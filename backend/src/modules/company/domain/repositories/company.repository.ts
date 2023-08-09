@@ -6,8 +6,14 @@ import { Injectable } from '@nestjs/common';
 
 @Injectable()
 export class CompanyRepository extends Repository<CompanyEntity> {
-  constructor(@InjectModel('companies') repo: Model<CompanyEntity>) {
-    super(repo);
+  constructor(@InjectModel('companies') model: Model<CompanyEntity>) {
+    super(model);
+  }
+
+  async findByOwner(ownerId: string): Promise<CompanyEntity> {
+    return await this.model.findOne({
+      ownerId: ownerId,
+    });
   }
 
   async findByname(name: string): Promise<CompanyEntity> {
